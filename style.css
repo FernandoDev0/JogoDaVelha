@@ -1,0 +1,126 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    width: 100vh;
+    height: 100vw;
+    background: linear-gradient(90deg, rgba(65,185,131,1)0% , rgba(0,212,255,1)100%);
+
+}
+
+.mensagem{
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    background-color: rgba(0 ,0,0,0.8);
+    flex-direction: column;
+
+}
+
+.mensagem button {
+    font-size: 2.5rem;
+    background-color: rgba(65,185,131,1);
+    padding: 10px 15px ;
+    border-radius: 5px;
+    border: none ;
+    margin-top: 16px;
+    color: white;
+
+}
+
+.mensagem button:hover {
+    color: rgba(65,185,131,1);
+    background-color: white;
+}
+
+.mensagem p{
+    color: white;
+    font-size: 5rem;
+}
+
+.tabuleiro{
+    display: grid;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    grid-template-columns: repeat(3,auto);
+
+}
+
+.tebuleiro.x .cell:not(.x):not(.o)::after ,
+.tebuleiro.x .cell:not(.x):not(.o)::before {
+    background: rgba(255, 255, 255, 0.3) !important;
+}
+
+
+.cell{
+    width: 100px;
+    height: 100px;
+    border: 2px solid white ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.cell:nth-child(1),.cell:nth-child(2),.cell:nth-child(3){
+    border-top: none;
+}
+
+.cell:nth-child(1),.cell:nth-child(4),.cell:nth-child(7){
+    border-left: none;
+}
+
+.cell:nth-child(7),.cell:nth-child(8),.cell:nth-child(9){
+    border-bottom: none;
+}
+
+.cell:nth-child(3),.cell:nth-child(6),.cell:nth-child(9){
+    border-right: none;
+}
+
+.cell.x::before, .cell.x::after ,.tebuleiro.x .cell:not(.x):not(.o)::after , .tebuleiro.x  .cell:not(.x):not(.o)::before {
+    content: "";
+    height: calc(100px * 0.15);
+    width: calc(100px * 0.9);
+    background: white;
+    position: absolute;
+
+}
+
+.cell.x::before{
+    transform: rotate(45deg);
+}
+
+.cell.cell.x::after{
+    transform: rotate(-45deg);
+}
+
+.cell.o::before, .cell.o::after {
+    content: "";
+    height: calc(100px * 0.9);
+    width: calc(100px * 0.9);
+    background: white;
+    position: absolute;
+    border-radius: 50%;
+
+}
+
+.cell.x .cell.o {
+    cursor: not-allowed;
+}
+
+.mostrarFim {
+    display: flex;
+}
